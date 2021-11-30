@@ -1,0 +1,588 @@
+{
+  "config": {
+    "variables": [
+      [
+        "None",
+        null,
+        false,
+        "",
+        0,
+        0,
+        0
+      ],
+      [
+        "Analog Input::MAP",
+        "map",
+        true,
+        "kPa",
+        0,
+        16,
+        -1
+      ],
+      [
+        "Analog Input::ECT",
+        "ect",
+        true,
+        "C",
+        2,
+        16,
+        -1
+      ],
+      [
+        "Analog Input::TPS",
+        "tps",
+        true,
+        "%",
+        2,
+        16,
+        -1
+      ],
+      [
+        "Analog Input::Ethanol %",
+        "ethanol",
+        true,
+        "%",
+        4,
+        16,
+        -1
+      ],
+      [
+        "Triggers::Engine Speed",
+        "engine_speed",
+        false,
+        "RPM",
+        6,
+        16,
+        0
+      ],
+      [
+        "User Tables::Table 1$user_tbl1_name",
+        "user_tbl1",
+        false,
+        "",
+        8,
+        16,
+        -1
+      ],
+      [
+        "User Tables::Table 2$user_tbl2_name",
+        "user_tbl2",
+        false,
+        "",
+        10,
+        16,
+        -1
+      ],
+      [
+        "User Tables::Table 3$user_tbl3_name",
+        "user_tbl3",
+        false,
+        "",
+        12,
+        16,
+        -1
+      ],
+      [
+        "User Tables::Table 4$user_tbl4_name",
+        "user_tbl4",
+        false,
+        "",
+        14,
+        16,
+        -1
+      ],
+      [
+        "User Tables::Table 5$user_tbl5_name",
+        "user_tbl5",
+        false,
+        "",
+        16,
+        16,
+        -1
+      ],
+      [
+        "Math Blocks::Block 1$math1_name",
+        "math_blk1",
+        false,
+        "",
+        18,
+        32,
+        0
+      ]
+    ],
+    "fields": [
+      [
+        "submenu",
+        "Fuel",
+        [
+          "submenu",
+          "Fuel Setup",
+          [
+            "page",
+            "Fuel Main",
+            [
+              "select",
+              "Equation Load Source",
+              "load_source",
+              0,
+              [
+                "MAP",
+                "BAP",
+                "OFF"
+              ]
+            ],
+            [
+              "scalar",
+              "Engine Capacity",
+              "engine_capacity",
+              "cc",
+              1,
+              2,
+              -1
+            ]
+          ],
+          [
+            "table",
+            "Fuel Table",
+            "fuel_table",
+            "%",
+            4,
+            1.5,
+            -1
+          ]
+        ]
+      ],
+      [
+        "submenu",
+        "User Tables",
+        [
+          "page",
+          "1dp Tables",
+          [
+            "select",
+            "Table 1 Enabled?",
+            "user_tbl1_en",
+            8,
+            [
+              "False",
+              "True"
+            ]
+          ],
+          [
+            "text",
+            "Table 1 Name",
+            "user_tbl1_name",
+            9,
+            20,
+            "user_tbl1_en == 'True'"
+          ],
+          [
+            "select",
+            "Table 2 Enabled?",
+            "user_tbl2_en",
+            29,
+            [
+              "False",
+              "True"
+            ]
+          ],
+          [
+            "text",
+            "Table 2 Name",
+            "user_tbl2_name",
+            30,
+            20,
+            "user_tbl2_en == 'True'"
+          ],
+          [
+            "select",
+            "Table 3 Enabled?",
+            "user_tbl3_en",
+            50,
+            [
+              "False",
+              "True"
+            ]
+          ],
+          [
+            "text",
+            "Table 3 Name",
+            "user_tbl3_name",
+            51,
+            20,
+            "user_tbl3_en == 'True'"
+          ],
+          [
+            "select",
+            "Table 4 Enabled?",
+            "user_tbl4_en",
+            71,
+            [
+              "False",
+              "True"
+            ]
+          ],
+          [
+            "text",
+            "Table 4 Name",
+            "user_tbl4_name",
+            72,
+            20,
+            "user_tbl4_en == 'True'"
+          ],
+          [
+            "select",
+            "Table 5 Enabled?",
+            "user_tbl5_en",
+            100,
+            [
+              "False",
+              "True"
+            ]
+          ],
+          [
+            "text",
+            "Table 5 Name",
+            "user_tbl5_name",
+            101,
+            20,
+            "user_tbl5_en == 'True'"
+          ]
+        ],
+        [
+          "table",
+          "User Table 1$user_tbl1_name",
+          "user_table_1",
+          "",
+          92,
+          -1.5,
+          -1,
+          "user_tbl1_en == 'True'"
+        ],
+        [
+          "table",
+          "User Table 2$user_tbl2_name",
+          "user_table_2",
+          "",
+          94,
+          -1.5,
+          -1,
+          "user_tbl2_en == 'True'"
+        ],
+        [
+          "table",
+          "User Table 3$user_tbl3_name",
+          "user_table_3",
+          "",
+          96,
+          -1.5,
+          -1,
+          "user_tbl3_en == 'True'"
+        ],
+        [
+          "table",
+          "User Table 4$user_tbl4_name",
+          "user_table_4",
+          "",
+          98,
+          -1.5,
+          -1,
+          "user_tbl4_en == 'True'"
+        ],
+        [
+          "table",
+          "User Table 5$user_tbl5_name",
+          "user_table_5",
+          "",
+          122,
+          -1.5,
+          -1,
+          "user_tbl5_en == 'True'"
+        ]
+      ],
+      [
+        "submenu",
+        "Math Blocks",
+        [
+          "page",
+          "Math Block 1$math1_name",
+          [
+            "text",
+            "Name",
+            "math1_name",
+            232,
+            20
+          ],
+          [
+            "varselect",
+            "Variable A",
+            "math1_var_a",
+            124
+          ],
+          [
+            "varselect",
+            "Variable B",
+            "math1_var_b",
+            126
+          ],
+          [
+            "varselect",
+            "Variable C",
+            "math1_var_c",
+            128
+          ],
+          [
+            "varselect",
+            "Variable D",
+            "math1_var_d",
+            130
+          ],
+          [
+            "text",
+            "Expression",
+            "math1_expr",
+            132,
+            100
+          ]
+        ]
+      ]
+    ],
+    "table_offset": 1000,
+    "total_size": 10000
+  },
+  "tune": {
+    "load_source": "MAP",
+    "engine_capacity": 0.0,
+    "fuel_table": {
+      "interpolate": 2,
+      "interpolate-B": "user_tbl1",
+      "interpolate-C": null,
+      "x-axis": [
+        "ect",
+        0,
+        0,
+        25,
+        50,
+        75,
+        100
+      ],
+      "y-axis": [
+        "math_blk1",
+        0,
+        0,
+        100,
+        200
+      ],
+      "data": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "user_tbl1_en": "True",
+    "user_tbl1_name": "VE",
+    "user_tbl2_en": "True",
+    "user_tbl2_name": "VE on E100",
+    "user_tbl3_en": "False",
+    "user_tbl3_name": "",
+    "user_tbl4_en": "False",
+    "user_tbl4_name": "",
+    "user_tbl5_en": "False",
+    "user_tbl5_name": "",
+    "user_table_1": {
+      "interpolate": 1,
+      "interpolate-B": "ethanol",
+      "interpolate-C": "user_tbl2",
+      "x-axis": [
+        "engine_speed",
+        0,
+        500,
+        1000,
+        2000,
+        4000,
+        6000,
+        8000
+      ],
+      "y-axis": [
+        "map",
+        0,
+        20,
+        40,
+        70,
+        100,
+        130,
+        160,
+        200
+      ],
+      "data": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "user_table_2": {
+      "interpolate": 0,
+      "interpolate-B": null,
+      "interpolate-C": null,
+      "x-axis": [
+        "engine_speed",
+        0,
+        500,
+        1000,
+        2000,
+        4000,
+        6000,
+        8000
+      ],
+      "y-axis": [
+        "map",
+        0,
+        20,
+        40,
+        70,
+        100,
+        130,
+        160,
+        200
+      ],
+      "data": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "user_table_3": null,
+    "user_table_4": null,
+    "user_table_5": null,
+    "math1_name": "Airflow Est",
+    "math1_var_a": "user_tbl1",
+    "math1_var_b": "engine_speed",
+    "math1_var_c": "map",
+    "math1_var_d": null,
+    "math1_expr": "a*b*c/800000"
+  }
+}
