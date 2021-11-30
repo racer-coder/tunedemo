@@ -78,10 +78,10 @@ class VerticalLabel(QLabel):
                          self.alignment(), self.text())
 
     def minimumSizeHint(self):
-        return super(VerticalLabel, self).minimumSizeHint().transposed()
+        return super().minimumSizeHint().transposed()
 
     def sizeHint(self):
-        return super(VerticalLabel, self).sizeHint().transposed()
+        return super().sizeHint().transposed()
 
 class WidgetTrapClose(QWidget):
     def __init__(self, parent, name):
@@ -332,6 +332,7 @@ class EditPanel(QMainWindow):
             gridsizer.addWidget(QLabel(self.getTextSubst(newpanel[1])), 0, 1) # XXX dynamic update
             hunits = QLabel('')
             vunits = VerticalLabel('')
+            vunits.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Minimum)
             gridsizer.addWidget(hunits, 0, 2)
             gridsizer.addWidget(vunits, 1, 0)
 
@@ -435,7 +436,7 @@ class EditPanel(QMainWindow):
         tbl = self.config.all_tables[table_name]
 
         dia = QDialog(self)
-        dia.setWindowTitle("Axis configuration for " + tbl.name)
+        dia.setWindowTitle("Axis configuration for " + self.getTextSubst(tbl.name))
         diasizer = QVBoxLayout()
         dia.setLayout(diasizer)
 
@@ -448,7 +449,7 @@ class EditPanel(QMainWindow):
         hboxsizer.addWidget(xaxis, 0, 1)
         xbins = QTableWidget(1, 24)
         xbins.verticalHeader().hide()
-        xbins.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
+        xbins.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         for i in range(24):
             xbins.setItem(0, i, QTableWidgetItem(''))
         for i, b in enumerate(tbl.AxisBins(self.tune, 0)):
@@ -458,6 +459,8 @@ class EditPanel(QMainWindow):
         xbins.resizeRowsToContents()
         xbins.setDisabled(not xaxis.short_name)
         xbins.cellChanged.connect(closure(self.binChange, xbins))
+        xbins.setMinimumHeight(xbins.viewportSizeHint().height() + xbins.horizontalScrollBar().sizeHint().height())
+        xbins.setMaximumHeight(xbins.viewportSizeHint().height() + xbins.horizontalScrollBar().sizeHint().height())
         hboxsizer.addWidget(xbins, 1, 0, 1, 2)
         diasizer.addWidget(hbox)
         xaxis.varChange.connect(lambda name: xbins.setDisabled(name is None))
